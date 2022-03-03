@@ -8,12 +8,29 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    
+    @IBOutlet weak var colorView: UIView!
+    @IBOutlet weak var redSliderValue: UILabel!
+    @IBOutlet weak var greenSliderValue: UILabel!
+    @IBOutlet weak var blueSliderValue: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        colorView.layer.cornerRadius = 25
     }
-
+    
+    @IBAction func redSliderValueChanged() {
+        
+    }
+    @IBAction func greenSliderValueChanged() {
+        
+    }
+    @IBAction func blueSliderValueChanged() {
+        
+    }
 
 }
 
