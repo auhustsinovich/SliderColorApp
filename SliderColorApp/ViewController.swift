@@ -9,8 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    
     @IBOutlet weak var colorView: UIView!
+    
     @IBOutlet weak var redSliderValue: UILabel!
     @IBOutlet weak var greenSliderValue: UILabel!
     @IBOutlet weak var blueSliderValue: UILabel!
@@ -21,20 +21,19 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        greenSliderValue.text = "542"
         colorView.layer.cornerRadius = 25
     }
     
-    @IBAction func redSliderValueChanged() {
-        redSliderValue.text = String(round(redSlider.value * 100) / 100)
+    @IBAction func sliderChanged() {
         
-    }
-    @IBAction func greenSliderValueChanged() {
-        greenSliderValue.text = String(round(greenSlider.value * 100) / 100)
+        redSliderValue.text = String(round(redSlider.value / 255.0 * 100.0 ) / 100)
+        greenSliderValue.text = String(round(greenSlider.value / 255.0 * 100) / 100)
+        blueSliderValue.text = String(round(blueSlider.value / 255.0 * 100) / 100)
         
-    }
-    @IBAction func blueSliderValueChanged() {
-        blueSliderValue.text = String(round(blueSlider.value * 100) / 100)
+        colorView.backgroundColor = UIColor(
+            red: CGFloat(redSlider.value) / 255,
+            green: CGFloat(greenSlider.value) / 255,
+            blue: CGFloat(blueSlider.value) / 255, alpha: 1
+        )
     }
 }
-
