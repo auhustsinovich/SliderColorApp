@@ -85,20 +85,20 @@
                                                 <rect key="frame" x="-2" y="0.0" width="221" height="31"/>
                                                 <color key="minimumTrackTintColor" red="0.60784316059999999" green="0.109803915" blue="0.1215686351" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <connections>
-                                                    <action selector="sliderChanged" destination="BYZ-38-t0r" eventType="valueChanged" id="ofE-JR-Ww0"/>
+                                                    <action selector="sliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Uob-SL-5V7"/>
                                                 </connections>
                                             </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="132" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="jEN-PP-uPh" userLabel="Green Slider">
                                                 <rect key="frame" x="-2" y="38" width="221" height="31"/>
                                                 <color key="minimumTrackTintColor" systemColor="systemGreenColor"/>
                                                 <connections>
-                                                    <action selector="sliderChanged" destination="BYZ-38-t0r" eventType="valueChanged" id="rB5-nc-DC4"/>
+                                                    <action selector="sliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="eFZ-aU-PIN"/>
                                                 </connections>
                                             </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="255" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="dzL-Xw-2Zj" userLabel="Blue Slider">
                                                 <rect key="frame" x="-2" y="76" width="221" height="31"/>
                                                 <connections>
-                                                    <action selector="sliderChanged" destination="BYZ-38-t0r" eventType="valueChanged" id="ut2-aF-PfM"/>
+                                                    <action selector="sliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="QjJ-4W-OgH"/>
                                                 </connections>
                                             </slider>
                                         </subviews>

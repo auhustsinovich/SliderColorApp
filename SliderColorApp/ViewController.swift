@@ -23,18 +23,19 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         colorView.layer.cornerRadius = 25
         setColor()
-        
-        redSliderValue.text = string(from: redSlider)
-        greenSliderValue.text = string(from: greenSlider)
-        blueSliderValue.text = string(from: blueSlider)
+        setValue(for: redSliderValue,greenSliderValue,blueSliderValue)
     }
     
-    @IBAction func sliderChanged() {
+    @IBAction func sliderChanged(_ sender: UISlider) {
         setColor()
-        
-        redSliderValue.text = string(from: redSlider)
-        greenSliderValue.text = string(from: greenSlider)
-        blueSliderValue.text = string(from: blueSlider)
+        switch sender {
+        case redSlider:
+            redSliderValue.text = string(from: redSlider)
+        case greenSlider:
+            greenSliderValue.text = string(from: greenSlider)
+        default:
+            blueSliderValue.text = string(from: blueSlider)
+        }
     }
     
     private func setColor() {
@@ -43,6 +44,21 @@ class ViewController: UIViewController {
             green: CGFloat(greenSlider.value) / 255,
             blue: CGFloat(blueSlider.value) / 255, alpha: 1
         )
+    }
+    
+    private func setValue(for labels: UILabel...) {
+        labels.forEach { sliderValue in
+            switch sliderValue {
+            case redSliderValue:
+                redSliderValue.text = string(from: redSlider)
+            case greenSliderValue:
+                greenSliderValue.text = string(from: greenSlider)
+            default:
+                blueSliderValue.text = string(from: blueSlider)
+                
+            }
+        }
+        
     }
     
     private func string(from slider: UISlider) -> String {
