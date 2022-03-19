@@ -24,6 +24,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var blueSliderField: UITextField!
     
     var colorViewColor: UIView!
+    var delegate: SettingsViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +51,8 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed() {
-        
+        delegate.setNewColor(for: colorView.backgroundColor ?? .black)
+        dismiss(animated: true)
     }
     
     private func setColor() {
@@ -73,7 +75,7 @@ class SettingsViewController: UIViewController {
             }
         }
     }
-        
+    
     private func setField(for fields: UITextField...) {
         fields.forEach { fieldValue in
             switch fieldValue {
