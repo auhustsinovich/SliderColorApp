@@ -25,6 +25,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mainViewBackground" destination="IKq-ZP-TKS" id="yI4-J3-Yuj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="08L-6X-9UP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -157,6 +160,9 @@
                                 <state key="normal" title="Done">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="doneButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="tXP-se-x9G"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -174,11 +180,14 @@
                     </view>
                     <connections>
                         <outlet property="blueSlider" destination="dzL-Xw-2Zj" id="lz9-3B-eKo"/>
+                        <outlet property="blueSliderField" destination="Add-5C-CX4" id="Pe9-jm-x18"/>
                         <outlet property="blueSliderValue" destination="koB-bp-9LJ" id="eKX-IV-Euk"/>
                         <outlet property="colorView" destination="vEr-OO-JpI" id="NBI-Ni-Z7J"/>
                         <outlet property="greenSlider" destination="jEN-PP-uPh" id="Gyw-tf-Irr"/>
+                        <outlet property="greenSliderField" destination="fFj-vH-SCf" id="by8-x5-x6g"/>
                         <outlet property="greenSliderValue" destination="76Z-nZ-zNS" id="vFf-qK-d8r"/>
                         <outlet property="redSlider" destination="Osb-AB-kY6" id="jnZ-J5-4Kv"/>
+                        <outlet property="redSliderField" destination="lXI-hy-KMR" id="JtP-t7-Abo"/>
                         <outlet property="redSliderValue" destination="d3M-0p-aU4" id="D70-aS-evj"/>
                     </connections>
                 </viewController>

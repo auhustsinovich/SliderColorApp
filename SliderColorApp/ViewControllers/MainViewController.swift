@@ -9,21 +9,20 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    
+    @IBOutlet var mainViewBackground: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        mainViewBackground.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
         // Do any additional setup after loading the view.
     }
     
-
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        guard let settingsVC = segue.destination as? SettingsViewController else { return }
+        settingsVC.colorViewColor = mainViewBackground
     }
-    */
-
 }
