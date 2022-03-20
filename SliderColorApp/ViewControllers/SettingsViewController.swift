@@ -99,10 +99,6 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    private func string(from slider: UISlider) -> String {
-        return String(format: "%.2f", slider.value )
-    }
-    
     private func gettingColor() {
         let color = CIColor(color: colorGetter)
         
@@ -114,6 +110,19 @@ class SettingsViewController: UIViewController {
         
         blueSlider.value = Float(color.blue)
         sliderChanged(blueSlider)
+    }
+    
+    private func string(from slider: UISlider) -> String {
+        return String(format: "%.2f", slider.value )
+    }
+}
+
+//MARK: - touchesBegan
+
+extension SettingsViewController {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
 }
 
@@ -154,7 +163,6 @@ extension SettingsViewController: UITextFieldDelegate {
 //MARK: - showAlert
 
 extension SettingsViewController {
-        
     private func showAlert() {
         
         let alert = UIAlertController(
@@ -173,19 +181,18 @@ extension SettingsViewController {
 //MARK: - addDoneButtonOnNumpad
 
 extension SettingsViewController {
-    
     private func addDoneButtonOnNumpad(textField: UITextField) {
         
         let keypadToolbar: UIToolbar = UIToolbar()
         
         keypadToolbar.items=[
+            UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
+                            target: .none,
+                            action: nil),
             UIBarButtonItem(title: "Done",
                             style: UIBarButtonItem.Style.done,
                             target: textField,
-                            action: #selector(UITextField.resignFirstResponder)),
-            UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
-                            target: .none,
-                            action: nil)
+                            action: #selector(UITextField.resignFirstResponder))
         ]
         keypadToolbar.sizeToFit()
         textField.inputAccessoryView = keypadToolbar

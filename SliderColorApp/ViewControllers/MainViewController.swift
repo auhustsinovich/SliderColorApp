@@ -35,7 +35,6 @@ class MainViewController: UIViewController {
 extension MainViewController: SettingsViewControllerDelegate {
     func setNewColor(for mainView: UIColor) {
         mainViewBackground.backgroundColor = mainView
-        
     }
 }
 
