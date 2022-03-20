@@ -32,6 +32,10 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         gettingColor()
         colorView.layer.cornerRadius = 25
+        
+        addDoneButtonOnNumpad(textField: redSliderField)
+        addDoneButtonOnNumpad(textField: greenSliderField)
+        addDoneButtonOnNumpad(textField: blueSliderField)
     }
     
     @IBAction func sliderChanged(_ sender: UISlider) {
@@ -52,6 +56,7 @@ class SettingsViewController: UIViewController {
     @IBAction func doneButtonPressed() {
         delegate.setNewColor(for: colorView.backgroundColor ?? .black)
         dismiss(animated: true)
+        view.endEditing(true)
     }
     
     private func setColor() {
@@ -111,4 +116,80 @@ class SettingsViewController: UIViewController {
         sliderChanged(blueSlider)
     }
 }
+
+//MARK: - UITextFieldDelegate
+
+extension SettingsViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        guard let newField = textField.text else {
+            showAlert()
+            return
+        }
+        guard let numberField = Float(newField) else {
+            showAlert()
+            return
+        }
+        
+        if numberField > 1 {
+            showAlert()
+        }
+        
+        if textField == redSliderField {
+            redSliderField.text = String(numberField)
+            redSlider.value = numberField
+            sliderChanged(redSlider)
+        } else if textField == greenSliderField {
+            greenSliderField.text = String(numberField)
+            greenSlider.value = numberField
+            sliderChanged(greenSlider)
+        } else {
+            blueSliderField.text = String(numberField)
+            blueSlider.value = numberField
+            sliderChanged(blueSlider)
+        }
+    }
+}
+
+//MARK: - showAlert
+
+extension SettingsViewController {
+        
+    private func showAlert() {
+        
+        let alert = UIAlertController(
+            title: "Invalid value",
+            message: "Please, enter correct value from 0 to 1",
+            preferredStyle: .alert
+        )
+        let okAction = UIAlertAction(title: "OK", style: .default) {_ in
+            return
+        }
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
+}
+
+//MARK: - addDoneButtonOnNumpad
+
+extension SettingsViewController {
+    
+    private func addDoneButtonOnNumpad(textField: UITextField) {
+        
+        let keypadToolbar: UIToolbar = UIToolbar()
+        
+        keypadToolbar.items=[
+            UIBarButtonItem(title: "Done",
+                            style: UIBarButtonItem.Style.done,
+                            target: textField,
+                            action: #selector(UITextField.resignFirstResponder)),
+            UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
+                            target: .none,
+                            action: nil)
+        ]
+        keypadToolbar.sizeToFit()
+        textField.inputAccessoryView = keypadToolbar
+    }
+}
+
 
