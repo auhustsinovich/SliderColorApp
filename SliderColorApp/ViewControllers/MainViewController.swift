@@ -10,6 +10,7 @@ import UIKit
 protocol SettingsViewControllerDelegate {
     func setNewColor(for mainView: UIColor)
 }
+
 class MainViewController: UIViewController {
     
     @IBOutlet var mainViewBackground: UIView!
@@ -25,6 +26,7 @@ class MainViewController: UIViewController {
         guard let settingsVC = segue.destination as? SettingsViewController else { return }
         settingsVC.colorViewColor = mainViewBackground
         settingsVC.delegate = self
+        settingsVC.colorGetter = mainViewBackground.backgroundColor
     }
 }
 
@@ -33,5 +35,7 @@ class MainViewController: UIViewController {
 extension MainViewController: SettingsViewControllerDelegate {
     func setNewColor(for mainView: UIColor) {
         mainViewBackground.backgroundColor = mainView
+        
     }
 }
+
