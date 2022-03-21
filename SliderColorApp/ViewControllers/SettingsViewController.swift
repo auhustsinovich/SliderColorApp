@@ -113,7 +113,7 @@ class SettingsViewController: UIViewController {
     }
     
     private func string(from slider: UISlider) -> String {
-        return String(format: "%.2f", slider.value )
+        String(format: "%.2f", slider.value )
     }
 }
 
